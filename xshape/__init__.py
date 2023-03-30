@@ -2,6 +2,7 @@ import hashlib
 import os
 import gmsh
 import tempfile
+import shutil
 
 class PersistantPath():
     name = ".xshape/tmp"
@@ -48,10 +49,11 @@ def manage_temporary_directories():
         print("The cache directory is too big...  please consider cleaning")
 
 def get_unique_filename(generating_function, **kwargs):
-    temporary_filename = "tmp.geo_unrolled"
-    gmsh.write(temporary_filename )
-    with open(temporary_filename) as file:
-        result = hashlib.md5(open(temporary_filename).read().encode())
+    temporary_file = tempfile.NamedTemporaryFile(suffix='.geo_unrolled')
+    temporary_file.close()
+    gmsh.write(temporary_file.name)
+    result = hashlib.md5(open(temporary_file.name).read().encode())
+
     md5digest=result.hexdigest()
 
     return generating_function.__name__+"_"+md5digest
@@ -99,6 +101,9 @@ def get_surface_filename(generating_function, **kwargs):
 
     gmsh.finalize()
     return full_filename
+
+def save(source_filename, as_filename):
+    return shutil.copy(source_filename, as_filename)
 
 def show(generating_function, **kwargs):
     manage_temporary_directories()

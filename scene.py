@@ -24,6 +24,8 @@ print(xshape.get_volume_filename(cavity, numCavities=2))
 print(xshape.get_volume_filename(finger, numPhalanges=2))
 print(xshape.get_surface_filename(finger, numPhalanges=2))
 
+xshape.save(xshape.get_surface_filename(finger, numPhalanges=2), 'myfile.msh')
+
 #xshape.show(cavity, numCavities=10)
 xshape.show(finger, numPhalanges=2)
 
