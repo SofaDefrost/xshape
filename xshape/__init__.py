@@ -99,3 +99,18 @@ def get_surface_filename(generating_function, **kwargs):
 
     gmsh.finalize()
     return full_filename
+
+def show(generating_function, **kwargs):
+    manage_temporary_directories()
+
+    gmsh.initialize()
+
+    # Silence gmsh so by default nothing is printed
+    gmsh.option.setNumber("General.Terminal", 0)
+    
+    id = generating_function(gmsh, **kwargs)
+    gmsh.model.occ.synchronize()
+
+    gmsh.fltk.run()
+
+    gmsh.finalize()
