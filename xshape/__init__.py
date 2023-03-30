@@ -1,3 +1,7 @@
+# Copyright CNRS
+# Licence lgpl
+# contributors:
+#    damien.marchal@univ-lille.fr
 import hashlib
 import os
 import gmsh

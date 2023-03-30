@@ -17,7 +17,7 @@ def finger(gmshctx, numPhalanges: int):
     return cutid
 
 #xshape.set_cache_mode("single-time")
-xshape.set_cache_mode("persistant")
+#xshape.set_cache_mode("persistant")
 
 print(xshape.get_volume_filename(cavity, numCavities=3))
 print(xshape.get_volume_filename(cavity, numCavities=2))
