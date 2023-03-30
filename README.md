@@ -4,8 +4,7 @@ Xshape
 A small python library to ease the use procedural geometry in Sofa. The geometry is generated once
 and then saved in a cache for future use. It is possible to control hoz the cache is working.
 
-
-'''python
+```python
 import xshape
 
 def finger(gmshctx, numPhalanges: int):
@@ -19,4 +18,4 @@ def finger(gmshctx, numPhalanges: int):
 def createScene(root):
     root.addObject('MeshMSHLoader', filename=xshape.get_volume_filename(cavity, numCavities=1) )
     root.addObject('MeshMSHLoader', filename=xshape.get_volume_filename(cavity, numCavities=2) )
-'''
+```
